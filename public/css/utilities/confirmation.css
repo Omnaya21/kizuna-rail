@@ -409,6 +409,9 @@ article.confirmation-page {
     article.confirmation-page {
         .confirmation-actions {
             display: none;
+            .btn {
+                display:none;
+            }
         }
 
         .confirmation-header {

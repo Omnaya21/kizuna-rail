@@ -17,13 +17,38 @@ const kmToMiles = (km) => {
 };
 
 /**
+ * 
+ * @param {number} amount 
+ * @returns formated string
+ */
+const formatCurrency = (amount) =>
+    new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD",
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    }).format(amount);
+
+/**
  * Converts Japanese Yen to US Dollars.
  * @param {number} yen - The amount in Japanese Yen.
  * @returns {number} The equivalent amount in US Dollars.
  */
 const yenToUsd = (yen) => {
     const exchangeRate = 0.0066; // Example rate: 1 Yen = 0.0066 USD
-    return yen * exchangeRate;
+    
+    return (yen * exchangeRate).toFixed(2);
 };
 
-export { generateConfirmationCode, kmToMiles, yenToUsd };
+/**
+ * Returns three leter month from month number
+ * @param {number} month - The month number (1-12).
+ * @returns {string} The three-letter abbreviation of the month.
+ */
+const getMonthName = (month) => {
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+                        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    return monthNames[month - 1];
+};
+
+export { generateConfirmationCode, kmToMiles, yenToUsd, getMonthName, formatCurrency };

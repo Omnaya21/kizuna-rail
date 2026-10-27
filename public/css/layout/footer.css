@@ -57,3 +57,50 @@ footer {
     0%, 49%  { opacity: 1; }
     50%,100% { opacity: 0; }
 }
+
+@media print {
+    header {
+        display: none;
+    }
+    article.confirmation-page {
+        .confirmation-actions {
+            display: none;
+        }
+
+        .confirmation-header {
+            background-color: white;
+            border: 2px solid var(--clr-primary);
+        }
+    }
+
+    footer {
+        display:none;
+    }
+}
+
+@media print {
+
+  article.confirmation-page {
+    width: 90%;
+    /*transform: scale(0.9);*/
+    transform-origin: top left;
+    height: 100vh;
+    /*overflow: hidden;*/
+    zoom: 0.5;
+  }
+
+  /* Avoid splitting important elements */
+  .section,
+  table,
+  img {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Hide elements that should not print */
+  .no-print,
+  nav,
+  button {
+    display: none !important;
+  }
+}
